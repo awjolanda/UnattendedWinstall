@@ -37,7 +37,7 @@ Missing apps/features are skipped. Individual removal failures are logged to `C:
 - Hides/disables news widgets, Copilot's taskbar button and Bing results in Start search. Local Windows Search is not changed.
 - Shows file extensions and hidden files, opens Explorer to This PC and enables long-path support.
 - Seeds per-user preferences through the default user profile before regular users are created.
-- Retains upstream offline/local-account OOBE behavior: network adapters are temporarily disabled and re-enabled at first sign-in. Local-account availability depends on the Windows build.
+- Leaves account and network setup screens available to the administrator. No offline-account bypass or network-adapter changes are applied; available setup options depend on the Windows build and edition.
 
 Cleanup runs **once during Windows setup**. There are no recurring removal tasks, per-user SYSTEM tasks, forced customization reboots or browser-protocol redirects. Apps installed manually afterward will not be removed by this profile.
 
@@ -54,6 +54,8 @@ Windows/image defaults and company policy remain responsible for:
 
 This answer file does not configure company encryption/recovery-key backup, endpoint protection or update management. Set those up separately. No hardware-requirement bypasses are included.
 
+No changes here intentionally disable antivirus, firewall, security services or third-party endpoint agents. WatchGuard EPDR compatibility still requires the administrator to verify the agent's supported Windows version/architecture, installation, management-console connectivity and protection status on a pilot laptop. Do not disable Defender or add antivirus exclusions through this answer file; let the supported WatchGuard installation and company policy manage coexistence.
+
 ## Installation
 
 Use this answer file for a clean Windows 11 installation on supported hardware.
@@ -62,7 +64,7 @@ Use this answer file for a clean Windows 11 installation on supported hardware.
 2. Create a bootable installation USB from an official Microsoft Windows ISO matching the laptop's architecture.
 3. Copy [`autounattend.xml`](./autounattend.xml) to the USB's root with that exact filename. Do not enable additional answer-file customizations in the USB creation tool that could overwrite it.
 4. Boot the laptop from the USB and perform a clean installation. Select the Windows edition and target disk when prompted. **Deleting partitions erases their data.** The answer file does not automatically wipe disks.
-5. Complete Windows setup. At first sign-in, network adapters are re-enabled automatically.
+5. Have the administrator complete account/network setup and company enrollment. The answer file does not create accounts or force offline setup.
 6. Install applications, developer tools and any required drivers manually. Configure encryption, endpoint protection and update management separately.
 
 Setup components are included for x64, ARM64 and x86; the Windows image must support the target hardware. This configuration is intended for clean installations, not in-place upgrades or existing Windows installations.
