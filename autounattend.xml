@@ -154,7 +154,6 @@ $packages = @(
     'Microsoft.ZuneMusic'
     'Microsoft.ZuneVideo'
     'Microsoft.WindowsSoundRecorder'
-    'Microsoft.MicrosoftStickyNotes'
     'Microsoft.Getstarted'
     'Microsoft.Todos'
     'Microsoft.YourPhone'
@@ -288,7 +287,6 @@ try {
     # disabling previews, hiding OneDrive status or changing accessibility settings.
     Set-RegistryDword "$defaultHive\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" 'HideFileExt' 0
     Set-RegistryDword "$defaultHive\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" 'Hidden' 1
-    Set-RegistryDword "$defaultHive\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" 'LaunchTo' 1
 } finally {
     $output = & reg.exe unload $defaultHive 2>&1
     if ($LASTEXITCODE -ne 0) {
