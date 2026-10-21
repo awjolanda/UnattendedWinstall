@@ -11,7 +11,7 @@ The answer file does not remove:
 - OneDrive, Windows Camera and new Outlook.
 - Edge, WebView2 and their update infrastructure.
 - Microsoft Store, App Installer/WinGet and Windows Terminal.
-- Paint, Photos, Notepad, Calculator and Snipping Tool.
+- Paint, Photos, Notepad, Calculator, Snipping Tool and Sticky Notes.
 - Shared Windows app frameworks and dependencies.
 
 This preserves components supplied by the Windows image; it does not install missing apps. Company Teams is **not** retained: the preinstalled `MSTeams` package is removed, and the current client can be installed manually later.
@@ -24,7 +24,7 @@ The exact package and capability lists are embedded in [`autounattend.xml`](./au
 - Consumer Copilot, Cortana, News, Weather, Bing Search, Clipchamp, 3D Viewer and Mixed Reality Portal.
 - Preinstalled Teams, Skype, legacy Mail/Calendar, Office Hub and OneNote.
 - Quick Assist (app and legacy capability), Power Automate Desktop, Dev Home, Feedback Hub, Get Help and Tips.
-- Maps, People, consumer Family, Phone Link, To Do, Sticky Notes, Alarms, Sound Recorder and legacy media apps.
+- Maps, People, consumer Family, Phone Link, To Do, Alarms, Sound Recorder and legacy media apps.
 - PowerShell ISE, Steps Recorder and WordPad capabilities where present.
 
 Recall is disabled if its optional feature is present and enabled. Game DVR recording is disabled to match the Game Bar removal.
@@ -35,7 +35,7 @@ Missing apps/features are skipped. Individual removal failures are logged to `C:
 
 - Suppresses advertising IDs, promotional suggestions and automatic suggested-app delivery.
 - Hides/disables news widgets, Copilot's taskbar button and Bing results in Start search. Local Windows Search is not changed.
-- Shows file extensions and hidden files, opens Explorer to This PC and enables long-path support.
+- Shows file extensions and hidden files and enables long-path support. Explorer's opening location is left at the Windows default.
 - Seeds per-user preferences through the default user profile before regular users are created.
 - Leaves account and network setup screens available to the administrator. No offline-account bypass or network-adapter changes are applied; available setup options depend on the Windows build and edition.
 
